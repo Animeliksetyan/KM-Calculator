@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM Benefit Calculator - Method</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .form-section {
+            padding: 40px;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .input-group select,
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group select:focus,
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .calculate-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .results {
+            display: none;
+            background: #f8f9ff;
+            padding: 40px;
+            border-top: 1px solid #e0e6ed;
+        }
+        
+        .results.show {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .result-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .result-card h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .result-value {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .career-benefits {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .career-benefits h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .career-benefits ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .career-benefits li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .career-benefits li:before {
+            content: "✨ ";
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Knowledge Management Benefit Calculator</h1>
+            <p>Discover your personal transformation benefits at Method</p>
+        </div>
+        
+        <div class="form-section">
+            <div class="input-group">
+                <label for="archetype">Select Your User Archetype:</label>
+                <select id="archetype" required>
+                    <option value="">Choose your type...</option>
+                    <option value="navigator">Navigator - I bridge information gaps</option>
+                    <option value="seeker">Targeted Seeker - I need information quickly</option>
+                    <option value="expert">Untapped Expert - I have knowledge to share</option>
+                    <option value="explorer">Explorer - I discover new approaches</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="roleLevel">Your Role Level:</label>
+                <select id="roleLevel" required>
+                    <option value="">Select level...</option>
+                    <option value="junior">Junior (0-3 years)</option>
+                    <option value="mid">Mid-level (4-7 years)</option>
+                    <option value="senior">Senior (8+ years)</option>
+                    <option value="leadership">Leadership</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="searchTime">Hours per week searching for information:</label>
+                <input type="number" id="searchTime" min="0" max="40" step="0.5" placeholder="e.g., 5.5" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="questionTime">Hours per week answering repetitive questions:</label>
+                <input type="number" id="questionTime" min="0" max="40" step="0.5" placeholder="e.g., 3" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="recreateTime">Hours per week recreating existing work:</label>
+                <input type="number" id="recreateTime" min="0" max="40" step="0.5" placeholder="e.g., 2" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="hourlyRate">Your estimated hourly value ($):</label>
+                <input type="number" id="hourlyRate" min="25" max="500" step="5" placeholder="e.g., 85" required>
+            </div>
+            
+            <button class="calculate-btn" onclick="calculateBenefits()">
+                🚀 Calculate My Benefits
+            </button>
+        </div>
+        
+        <div id="results" class="results">
+            <div class="result-card">
+                <h3>⏰ Weekly Time Savings</h3>
+                <div class="result-value" id="weeklySavings">0 hours</div>
+                <p>Time you'll save each week with efficient knowledge management</p>
+            </div>
+            
+            <div class="result-card">
+                <h3>💰 Annual Value Creation</h3>
+                <div class="result-value" id="annualValue">$0</div>
+                <p>Your productivity value increase per year</p>
+            </div>
+            
+            <div class="result-card">
+                <h3>📈 Productivity Boost</h3>
+                <div class="result-value" id="productivityBoost">0%</div>
+                <p>Percentage increase in your weekly effectiveness</p>
+            </div>
+            
+            <div class="career-benefits">
+                <h3>🌟 Career Advancement Opportunities</h3>
+                <ul id="careerList">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const careerBenefits = {
+            navigator: {
+                junior: [
+                    "Become the go-to person for cross-team collaboration",
+                    "Develop reputation as a knowledge connector",
+                    "Fast-track to team lead roles through networking skills"
+                ],
+                mid: [
+                    "Lead knowledge sharing initiatives across departments",
+                    "Mentor junior staff on organizational navigation",
+                    "Position for project management and coordination roles"
+                ],
+                senior: [
+                    "Drive organizational knowledge strategy",
+                    "Become internal consultant for complex projects",
+                    "Leadership recognition for cultural transformation"
+                ],
+                leadership: [
+                    "Champion organizational learning and development",
+                    "Drive competitive advantage through knowledge leverage",
+                    "Build legacy as transformational leader"
+                ]
+            },
+            seeker: {
+                junior: [
+                    "Deliver higher quality work faster than peers",
+                    "Impress clients with quick, informed responses",
+                    "Build reputation for efficiency and reliability"
+                ],
+                mid: [
+                    "Lead high-pressure client engagements confidently",
+                    "Mentor others on efficient research methods",
+                    "Qualify for senior client-facing roles"
+                ],
+                senior: [
+                    "Become the expert others turn to for complex problems",
+                    "Lead proposal development with comprehensive insights",
+                    "Drive business development through knowledge depth"
+                ],
+                leadership: [
+                    "Set organizational standards for client excellence",
+                    "Drive revenue growth through superior delivery",
+                    "Build market reputation as thought leader"
+                ]
+            },
+            expert: {
+                junior: [
+                    "Build personal brand as emerging expert",
+                    "Gain visibility through knowledge contributions",
+                    "Accelerate learning through teaching others"
+                ],
+                mid: [
+                    "Establish thought leadership in your domain",
+                    "Lead training and development initiatives",
+                    "Become internal consultant and advisor"
+                ],
+                senior: [
+                    "Drive innovation through knowledge synthesis",
+                    "Mentor next generation of experts",
+                    "Shape organizational capabilities and offerings"
+                ],
+                leadership: [
+                    "Build organizational intellectual capital",
+                    "Drive market positioning through expertise",
+                    "Create lasting competitive advantages"
+                ]
+            },
+            explorer: {
+                junior: [
+                    "Discover innovative solutions faster than peers",
+                    "Build diverse network across the organization",
+                    "Develop reputation for creative problem-solving"
+                ],
+                mid: [
+                    "Lead cross-industry innovation projects",
+                    "Connect disparate ideas for breakthrough solutions",
+                    "Drive new service development initiatives"
+                ],
+                senior: [
+                    "Shape organizational innovation strategy",
+                    "Lead transformational change initiatives",
+                    "Build partnerships across industry boundaries"
+                ],
+                leadership: [
+                    "Drive market disruption through knowledge synthesis",
+                    "Build culture of innovation and exploration",
+                    "Position organization as industry pioneer"
+                ]
+            }
+        };
+
+        function calculateBenefits() {
+            const archetype = document.getElementById('archetype').value;
+            const roleLevel = document.getElementById('roleLevel').value;
+            const searchTime = parseFloat(document.getElementById('searchTime').value) || 0;
+            const questionTime = parseFloat(document.getElementById('questionTime').value) || 0;
+            const recreateTime = parseFloat(document.getElementById('recreateTime').value) || 0;
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            
+            if (!archetype || !roleLevel || hourlyRate === 0) {
+                alert('Please fill in all fields to calculate your benefits!');
+                return;
+            }
+            
+            // Calculate efficiency improvements based on archetype
+            const efficiencyMultipliers = {
+                navigator: { search: 0.6, question: 0.4, recreate: 0.7 },
+                seeker: { search: 0.8, question: 0.3, recreate: 0.8 },
+                expert: { search: 0.5, question: 0.7, recreate: 0.6 },
+                explorer: { search: 0.7, question: 0.3, recreate: 0.8 }
+            };
+            
+            const multiplier = efficiencyMultipliers[archetype];
+            const weeklySavings = (searchTime * multiplier.search) + 
+                                 (questionTime * multiplier.question) + 
+                                 (recreateTime * multiplier.recreate);
+            
+            const annualSavings = weeklySavings * 50 * hourlyRate;
+            const totalWeeklyTime = searchTime + questionTime + recreateTime + 32; // Assume 35-hour work week
+            const productivityIncrease = (weeklySavings / totalWeeklyTime) * 100;
+            
+            // Display results
+            document.getElementById('weeklySavings').textContent = `${weeklySavings.toFixed(1)} hours`;
+            document.getElementById('annualValue').textContent = `$${annualSavings.toLocaleString()}`;
+            document.getElementById('productivityBoost').textContent = `${productivityIncrease.toFixed(1)}%`;
+            
+            // Show career benefits
+            const careerList = document.getElementById('careerList');
+            careerList.innerHTML = '';
+            const benefits = careerBenefits[archetype][roleLevel];
+            benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.textContent = benefit;
+                careerList.appendChild(li);
+            });
+            
+            // Show results section
+            document.getElementById('results').classList.add('show');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
