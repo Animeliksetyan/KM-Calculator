@@ -374,26 +374,32 @@
             document.getElementById('annualValue').textContent = `$${annualSavings.toLocaleString()}`;
             document.getElementById('productivityBoost').textContent = `${productivityIncrease.toFixed(1)}%`;
 
-           // Define McKinsey variables
-           const mckinseyBaseline = 35 * 0.20; // 7 hours per week
-           const userCurrentTotal = searchTime + questionTime + recreateTime;
-           const userPercentage = (userCurrentTotal / 35) * 100;
+            // Clear any existing McKinsey cards
+            const existingMcKinseyCard = document.querySelector('.mckinsey-card');
+            if (existingMcKinseyCard) {
+                existingMcKinseyCard.remove();
+            }
 
-           const mckinseyCard = document.createElement('div');
-           mckinseyCard.className = 'result-card';
-           mckinseyCard.style.borderLeft = '5px solid #3498db';
-           mckinseyCard.innerHTML = `
-               <h3> Industry Context</h3>
-               <p><strong>Your current state:</strong> ${userCurrentTotal.toFixed(1)} hours/week (${userPercentage.toFixed(1)}% of your time)</p>
-               <p><strong>Industry average:</strong> ${mckinseyBaseline} hours/week (20% of time) - McKinsey Research</p>
-               <p><strong>Your goal:</strong> Reduce these activities through better knowledge management</p>
-               ${userCurrentTotal < mckinseyBaseline ? 
-                   '<p style="color: #27ae60;"><strong>✓ You\'re already below average - excellent opportunity to get even more efficient!</strong></p>' : 
-                   '<p style="color: #e67e22;"><strong>→ You\'re at/above average - significant improvement potential!</strong></p>'
+            // Define McKinsey variables
+            const mckinseyBaseline = 35 * 0.20; // 7 hours per week
+            const userCurrentTotal = searchTime + questionTime + recreateTime;
+            const userPercentage = (userCurrentTotal / 35) * 100;
+
+            const mckinseyCard = document.createElement('div');
+            mckinseyCard.className = 'result-card mckinsey-card';
+            mckinseyCard.style.borderLeft = '5px solid #3498db';
+            mckinseyCard.innerHTML = `
+                <h3> Industry Context</h3>
+                <p><strong>Your current state:</strong> ${userCurrentTotal.toFixed(1)} hours/week (${userPercentage.toFixed(1)}% of your time)</p>
+                <p><strong>Industry average:</strong> ${mckinseyBaseline} hours/week (20% of time) - McKinsey Research</p>
+                <p><strong>Your goal:</strong> Reduce these activities through better knowledge management</p>
+                ${userCurrentTotal < mckinseyBaseline ? 
+                    '<p style="color: #27ae60;"><strong>✓ You\'re already below average - excellent opportunity to get even more efficient!</strong></p>' : 
+                    '<p style="color: #e67e22;"><strong>→ You\'re above average - significant improvement potential!</strong></p>'
                 }
             `;
 
-          // Show career benefits
+            // Show career benefits
             const careerList = document.getElementById('careerList');
             careerList.innerHTML = '';
             const benefits = careerBenefits[archetype][roleLevel];
@@ -404,27 +410,12 @@
             });
 
             // Show results section and add McKinsey card in correct position
-            document.getElementById('results').classList.add('show');
             const resultsDiv = document.getElementById('results');
             const careerBenefitsDiv = document.querySelector('.career-benefits');
             resultsDiv.insertBefore(mckinseyCard, careerBenefitsDiv);
-            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
-
             
-            // Show career benefits
-            //const careerList = document.getElementById('careerList');
-            //careerList.innerHTML = '';
-            //const benefits = careerBenefits[archetype][roleLevel];
-            //benefits.forEach(benefit => {
-                //const li = document.createElement('li');
-                //li.textContent = benefit;
-                //careerList.appendChild(li);
-            //});
-            
-            // Show results section
-            //document.getElementById('results').classList.add('show');
-            
-           // document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            resultsDiv.classList.add('show');
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
