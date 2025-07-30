@@ -45,4 +45,4 @@ A modern browser is needed.
 | Seeker    | 0.8    | 0.3      | 0.8      |
 | Expert    | 0.5    | 0.7      | 0.6      |
 | Explorer  | 0.7    | 0.3      | 0.8      |
-These multipliers determine how much time can be saved by archetype for each task type based on behavioral psychology guesstimates.
+<br>These multipliers determine how much time can be saved by user archetype for each task type based on behavioral psychology guesstimates.
