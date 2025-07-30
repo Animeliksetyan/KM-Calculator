@@ -19,10 +19,10 @@ __Vanilla JavaScript__ Dynamic calculations and DOM manipulation<br>
 ### User Inputs <br>
 Select your archetype and role level.<br>
 Enter weekly hours spent on
-+Searching for information<br>
-+Answering repetitive questions<br>
-+Recreating existing work<br>
-+Input your estimated hourly value<br>
+*Searching for information<br>
+*Answering repetitive questions<br>
+*Recreating existing work<br>
+*Input your estimated hourly value<br>
 ###Calculation Logic
 Applies an efficiency multiplier based on archetype for each activity.<br>
 Calculates
