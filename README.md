@@ -44,5 +44,13 @@ A modern browser is needed.
 | Navigator | 0.6    | 0.4      | 0.7      |
 | Seeker    | 0.8    | 0.3      | 0.8      |
 | Expert    | 0.5    | 0.7      | 0.6      |
-| Explorer  | 0.7    | 0.3      | 0.8      |
-<br>These multipliers determine how much time can be saved by user archetype for each task type based on behavioral psychology guesstimates.
+| Explorer  | 0.7    | 0.3      | 0.8      |<br>
+These multipliers determine how much time can be saved by user archetype for each task type based on behavioral psychology guesstimates.
+### Notes
+The calculator assumes a 35-hour work week, of which 3 hours/day (15/week) are allocated to other activities (i.e., a baseline of 32 hours is used in productivity percentage calculations).
+Career benefits are illustrative and intended to spark reflection on the value of knowledge behaviors.
+
+### Feedback & Customization
+If you'd like to customize user archetypes, adjust multipliers, or tailor the career benefits to your organization or use case, feel free to reach out or fork the project.
+
+
