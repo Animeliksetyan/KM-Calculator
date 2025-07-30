@@ -12,6 +12,6 @@ Compares employee's weekly time usage on KM to McKinsey’s industry average.
 ### Career Growth Insights
 Displays role-specific career benefits aligned to employee's knowledge archetype.
 ## Technologies Used
-HTML5 – Structure and layout
-CSS3 – Responsive and modern UI/UX with gradients and animations
-Vanilla JavaScript – Dynamic calculations and DOM manipulation
+__HTML5__ Structure and layout<br>
+__CSS3__ Responsive and modern UI/UX with gradients and animations<br>
+__Vanilla JavaScript__ Dynamic calculations and DOM manipulation<br>
