@@ -1,6 +1,7 @@
 This interactive web tool helps users quantify Method employees benefits of adopting better knowledge management practices. Built with HTML, CSS, and JavaScript, the calculator estimates time savings, productivity boosts, and financial value based on the user's archetype and role level.
-Features
-User Archetype Selection
+
+## Features
+### User Archetype Selection
 Users can choose their KM personality type — Navigator, Seeker, Expert, or Explorer.
 
 Personalized Productivity Gains
