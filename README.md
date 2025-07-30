@@ -19,16 +19,16 @@ __Vanilla JavaScript__ Dynamic calculations and DOM manipulation<br>
 ### User Inputs <br>
 Select your archetype and role level.<br>
 Enter weekly hours spent on
-*Searching for information<br>
-*Answering repetitive questions<br>
-*Recreating existing work<br>
-*Input your estimated hourly value<br>
-###Calculation Logic
+* Searching for information<br>
+* Answering repetitive questions<br>
+* Recreating existing work<br>
+* Input your estimated hourly value<br>
+### Calculation Logic
 Applies an efficiency multiplier based on archetype for each activity.<br>
 Calculates
-+Weekly Time Savings
-+Annual Value Creation (based on 50 weeks/year)
-+% Productivity Boost (relative to 35-hour week)
++ Weekly Time Savings
++ Annual Value Creation (based on 50 weeks/year)
++ % Productivity Boost (relative to 35-hour week)
 ## Contextual Benchmarking
 Displays a McKinsey comparison as industry average time spent on knowledge friction  ~7 hours/week.<br>
 Flags users above or below this baseline.<br>
