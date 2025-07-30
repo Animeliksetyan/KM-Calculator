@@ -34,4 +34,15 @@ Displays a McKinsey comparison as industry average time spent on knowledge frict
 Flags users above or below this baseline.<br>
 ## Career Benefits Display
 Shows a list of career growth opportunities based on the user's archetype and role level.
-
+## Prerequisites
+A modern browser is needed.
+* Download or clone the repository.
+* Open index.html in any browser.
+## Archetype efficiency multipliers per time used to search, recreate, and address repetitive questions.
+| Archetype | Search | Question | Recreate |
+| --------- | ------ | -------- | -------- |
+| Navigator | 0.6    | 0.4      | 0.7      |
+| Seeker    | 0.8    | 0.3      | 0.8      |
+| Expert    | 0.5    | 0.7      | 0.6      |
+| Explorer  | 0.7    | 0.3      | 0.8      |
+These multipliers determine how much time can be saved by archetype for each task type based on behavioral psychology guesstimates.
